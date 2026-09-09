@@ -1,0 +1,115 @@
+version: "1.0"
+name: squad-dev-team
+description: Squad autonomo para levar uma ideia de software da descoberta ao deploy.
+language: pt-BR
+defaults:
+  autonomy: maximum
+  ask_user_only_when: critical_blocker
+  context_budget: focused
+  source_of_truth: .agents
+
+agents:
+  - id: explorer
+    file: .agents/agents/explorer.agent.md
+    implementation: .agents/agents/explorer-agent.md
+    skills: [web_search, web_fetch, code-archaeologist, clean-code]
+  - id: planner
+    file: .agents/agents/planner.agent.md
+    implementation: .agents/agents/project-planner.md
+    skills: [plan, brainstorm, clean-code]
+  - id: designer
+    file: .agents/agents/designer.agent.md
+    implementation: .agents/agents/frontend-specialist.md
+    skills: [frontend-design, documentation-templates]
+  - id: frontend-dev
+    file: .agents/agents/frontend-dev.agent.md
+    implementation: .agents/agents/frontend-specialist.md
+    skills: [frontend-design, nextjs-react-expert, clean-code]
+  - id: backend-dev
+    file: .agents/agents/backend-dev.agent.md
+    implementation: .agents/agents/backend-specialist.md
+    skills: [api-patterns, database-design, clean-code]
+  - id: reviewer
+    file: .agents/agents/reviewer.agent.md
+    implementation: .agents/agents/security-auditor.md
+    skills: [clean-code, vulnerability-scanner, performance-profiling]
+  - id: qa
+    file: .agents/agents/qa.agent.md
+    implementation: .agents/agents/qa-automation-engineer.md
+    skills: [testing-patterns, webapp-testing, vulnerability-scanner]
+  - id: devops
+    file: .agents/agents/devops.agent.md
+    implementation: .agents/agents/devops-engineer.md
+    skills: [deploy, performance-profiling, vulnerability-scanner]
+  - id: orchestrator
+    file: .agents/agents/orchestrator.agent.md
+    implementation: .agents/agents/orchestrator.md
+    skills: [orchestrate, plan, clean-code]
+
+supporting_agents:
+  - id: database-architect
+    file: .agents/agents/database-architect.md
+  - id: debugger
+    file: .agents/agents/debugger.md
+  - id: documentation-writer
+    file: .agents/agents/documentation-writer.md
+  - id: game-developer
+    file: .agents/agents/game-developer.md
+  - id: mobile-developer
+    file: .agents/agents/mobile-developer.md
+  - id: penetration-tester
+    file: .agents/agents/penetration-tester.md
+  - id: performance-optimizer
+    file: .agents/agents/performance-optimizer.md
+  - id: product-manager
+    file: .agents/agents/product-manager.md
+  - id: product-owner
+    file: .agents/agents/product-owner.md
+  - id: security-auditor
+    file: .agents/agents/security-auditor.md
+  - id: seo-specialist
+    file: .agents/agents/seo-specialist.md
+  - id: test-engineer
+    file: .agents/agents/test-engineer.md
+
+skills:
+  - id: web_search
+    path: .agents/skills/web_search/SKILL.md
+  - id: web_fetch
+    path: .agents/skills/web_fetch/SKILL.md
+  - id: code-archaeologist
+    path: .agents/agents/code-archaeologist.md
+  - id: brainstorm
+    path: .agents/workflows/brainstorm.md
+  - id: plan
+    path: .agents/workflows/plan.md
+  - id: orchestrate
+    path: .agents/workflows/orchestrate.md
+  - id: frontend-design
+    path: .agents/skills/frontend-design/SKILL.md
+  - id: api-patterns
+    path: .agents/skills/api-patterns/SKILL.md
+  - id: database-design
+    path: .agents/skills/database-design/SKILL.md
+  - id: clean-code
+    path: .agents/skills/clean-code/SKILL.md
+  - id: testing-patterns
+    path: .agents/skills/testing-patterns/SKILL.md
+  - id: deploy
+    path: .agents/skills/deploy/SKILL.md
+  - id: documentation-templates
+    path: .agents/skills/documentation-templates/SKILL.md
+  - id: nextjs-react-expert
+    path: .agents/skills/nextjs-react-expert/SKILL.md
+  - id: performance-profiling
+    path: .agents/skills/performance-profiling/SKILL.md
+  - id: vulnerability-scanner
+    path: .agents/skills/vulnerability-scanner/SKILL.md
+  - id: webapp-testing
+    path: .agents/skills/webapp-testing/SKILL.md
+
+pipeline: pipeline/pipeline.yaml
+rules: .agents/rules/GEMINI.md
+report:
+  required_sections: [summary, changed_files, tests, risks, deployment]
+  deployment_url: required_when_available

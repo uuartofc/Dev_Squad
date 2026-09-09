@@ -1,0 +1,54 @@
+version: "1.0"
+name: full-development
+description: Fluxo completo da ideia vaga ate a entrega verificada.
+fail_fast: true
+approval_policy: autonomous-unless-critical-blocker
+
+stages:
+  - id: exploration
+    agent: explorer
+    required: true
+    output: .squad/exploration.md
+  - id: planning
+    agent: planner
+    required: true
+    needs: [exploration]
+    output: .squad/plan.md
+  - id: design
+    agent: designer
+    required: false
+    when: request.ui == true
+    needs: [planning]
+    output: .squad/design.md
+  - id: backend
+    agent: backend-dev
+    required: false
+    when: request.backend == true
+    needs: [planning]
+    output: .squad/backend.md
+  - id: frontend
+    agent: frontend-dev
+    required: true
+    needs: [planning, design?, backend?]
+    output: .squad/frontend.md
+  - id: review
+    agent: reviewer
+    required: true
+    needs: [frontend, backend?]
+    output: .squad/review.md
+  - id: tests
+    agent: qa
+    required: true
+    needs: [review]
+    output: .squad/tests.md
+  - id: deploy
+    agent: devops
+    required: true
+    needs: [tests]
+    output: .squad/deploy.md
+
+completion:
+  require_all_required_stages: true
+  require_tests_passed: true
+  require_security_review: true
+  require_deploy_health_check: true
