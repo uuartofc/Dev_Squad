@@ -1,0 +1,45 @@
+{
+  "name": "@uuartofc/web-ag-kit",
+  "version": "1.0.0",
+  "description": "AI agents, skills, workflows, security checks, and frontend guidance for web projects.",
+  "keywords": [
+    "ai-agents",
+    "developer-tools",
+    "web-development",
+    "security-testing",
+    "workflow-automation"
+  ],
+  "license": "MIT",
+  "author": "uuartofc",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uuartofc/Web-Kit-Agents.git"
+  },
+  "homepage": "https://github.com/uuartofc/Web-Kit-Agents",
+  "bugs": {
+    "url": "https://github.com/uuartofc/Web-Kit-Agents/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "commonjs",
+  "main": "package.json",
+  "bin": {
+    "web-ag-kit": "bin/web-kit-agents.js",
+    "web-kit-agents": "bin/web-kit-agents.js"
+  },
+  "files": [
+    "agents",
+    "skills",
+    "workflows",
+    "rules",
+    "scripts",
+    "mcp",
+    ".shared",
+    "ARCHITECTURE.md",
+    "bin"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
