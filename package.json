@@ -1,0 +1,35 @@
+{
+  "name": "@uuartofc/squad-dev-team",
+  "version": "1.0.0",
+  "description": "Squad de agentes de IA para desenvolvimento web full-stack, qualidade e deploy.",
+  "keywords": [
+    "ai-agents",
+    "developer-tools",
+    "web-development",
+    "workflow-automation",
+    "antigravity"
+  ],
+  "license": "MIT",
+  "author": "uuartofc",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uuartofc/Web-Kit-Agents.git"
+  },
+  "homepage": "https://github.com/uuartofc/Web-Kit-Agents",
+  "bugs": {
+    "url": "https://github.com/uuartofc/Web-Kit-Agents/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "commonjs",
+  "bin": {
+    "squad-dev-team": ".agents/bin/web-kit-agents.js"
+  },
+  "files": [
+    ".agents"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
